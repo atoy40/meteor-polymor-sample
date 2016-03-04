@@ -1,0 +1,41 @@
+<link rel="import" href="/bower_components/iron-form/iron-form.html">
+<link rel="import" href="/bower_components/paper-styles/color.html">
+<link rel="import" href="/bower_components/paper-button/paper-button.html">
+<link rel="import" href="/bower_components/paper-input/paper-input.html">
+
+<dom-module id="polymor-demo-form">
+  <style>
+    :host {
+      display: block;
+    }
+    paper-button {
+      background-color: var(--paper-blue-300);
+    }
+  </style>
+
+  <template>
+    <meteor-collection id="collection" name="people" on-insert="_cleanForm"></meteor-collection>
+    <form is="iron-form" id="form1">
+      <paper-input name="name" label="name" minlength="3" autoValidate="true"></paper-input>
+      <paper-input name="age" label="age" type="number" min="1"></paper-input>
+    </form>
+    <paper-button raised on-click="_clicked">Add</paper-button>
+  </template>
+
+  <script>
+    Polymer({
+      is: "polymor-demo-form",
+      properties: {
+      },
+      _clicked: function(e) {
+        if (this.$.form1.validate()) {
+          var data = this.$.form1.serialize();
+          this.$.collection.insert(data);
+        }
+      },
+      _cleanForm: function() {
+        this.$.form1.reset();
+      },
+    });
+  </script>
+</dom-module>

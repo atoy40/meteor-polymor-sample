@@ -1,0 +1,3 @@
+[submodule "packages/polymor"]
+	path = packages/polymor
+	url = https://github.com/atoy40/meteor-polymor.git

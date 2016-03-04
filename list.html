@@ -1,0 +1,41 @@
+<link rel="import" href="/bower_components/iron-icons/iron-icons.html">
+
+<dom-module id="polymor-demo-list-user">
+  <style>
+    :host {
+      display: block;
+    }
+    iron-icon {
+      cursor: pointer;
+    }
+  </style>
+
+  <template>
+    <meteor-collection name="people" id="collection">
+      <meteor-query options='{"sort":{"age":1}}' enable="true" data="{{data}}"></meteor-query>
+    </meteor-collection>
+
+
+    <table>
+      <thead>
+        <tr><th>Name</th><th>Age</th></tr>
+      </thead>
+      <tbody>
+        <template is="dom-repeat" items="{{data}}">
+          <tr><td>{{item.name}}</td><td>{{item.age}}</td><td><iron-icon icon="delete" on-click="_del"></iron-icon></td></tr>
+        </template>
+      </tbody>
+    </table>
+  </template>
+
+  <script>
+    Polymer({
+      is: "polymor-demo-list-user",
+      properties: {
+      },
+      _del: function(e) {
+        this.$.collection.remove(e.model.item._id);
+      }
+    });
+  </script>
+</dom-module>

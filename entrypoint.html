@@ -1,0 +1,53 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/paper-card/paper-card.html">
+<link rel="import" href="/bower_components/paper-styles/default-theme.html">
+<link rel="import" href="/bower_components/paper-styles/typography.html">
+
+<dom-module id="polymor-entry">
+  <style>
+    :host {
+      @apply(--paper-font-common-base);
+    }
+    paper-card {
+      display: block;
+      background: var(--paper-blue-grey-50);
+      margin-bottom: 15px;
+    }
+  </style>
+
+  <template>
+    <meteor-connection connected="{{connected}}"></meteor-connection>
+
+    <h1>Welcome to Meteor, and Polymer !</h1>
+
+    <paper-card heading="the &lt;meteor-connection&gt; element test">
+      <div class="card-content">
+        server connection : <strong>{{connected}}</strong>
+      </div>
+    </paper-card>
+
+    <paper-card heading="A simple element with a button and his click handler">
+      <div class="card-content">
+        <polymor-demo-incrementer counter="5"></polymor-demo-incrementer>
+      </div>
+    </paper-card>
+
+    <paper-card heading="An &lt;iron-form&gt; interacting with a &lt;meteor-collection&gt;">
+      <div class="card-content">
+        <polymor-demo-form></polymor-demo-form>
+      </div>
+    </paper-card>
+
+    <paper-card heading="A &lt;meteor-query&gt; inside his &lt;meteor-collection&gt;">
+      <div class="card-content">
+        <polymor-demo-list-user></polymor-demo-list-user>
+      </div>
+    </paper-card>
+  </template>
+
+  <script>
+    Polymer({
+      is: "polymor-entry"
+    });
+  </script>
+</dom-module>

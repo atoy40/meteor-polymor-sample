@@ -1,0 +1,33 @@
+<link rel="import" href="/bower_components/paper-styles/color.html">
+<link rel="import" href="/bower_components/paper-button/paper-button.html">
+
+<dom-module id="polymor-demo-incrementer">
+  <style>
+    :host {
+      display: block;
+    }
+    paper-button {
+      background-color: var(--paper-blue-300);
+    }
+  </style>
+
+  <template>
+    <paper-button raised on-click="_clicked">Click Me</paper-button>
+    <p>You've pressed the button {{counter}} times.</p>
+  </template>
+
+  <script>
+    Polymer({
+      is: "polymor-demo-incrementer",
+      properties: {
+        counter: {
+          type: Number,
+          value: 0
+        },
+      },
+      _clicked: function(e) {
+        this.counter++;
+      }
+    });
+  </script>
+</dom-module>
